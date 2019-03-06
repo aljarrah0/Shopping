@@ -1,0 +1,30 @@
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Favorite food" value="Sushi">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Leave a comment"></textarea>
+    </mat-form-field>
+  </form>
+
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-slide-toggle>Slide me!</mat-slide-toggle>
+
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>enter the name :</mat-label>
+          <input matInput placeholder="mohammed">
+        </mat-form-field>
+      </p>
+      <p>
+          <mat-form-field appearance="outline">
+            <mat-label>enter password :</mat-label>
+            <input matInput placeholder="*******">
+          </mat-form-field>
+        </p>

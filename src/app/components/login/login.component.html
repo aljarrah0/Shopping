@@ -1,0 +1,64 @@
+<div class="container">
+
+  <div class="row justify-content-center">
+    <div class="col-md-8 mx-auto">
+
+      <form #f="ngForm" class="form-signin">
+        <div class="form-label-group">
+          <label for="inputEmail">Email address</label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" email
+            ngModel #email="ngModel" required autofocus>
+
+          <div class="text-danger" *ngIf='email.touched && email.invalid'>
+            <div *ngIf="email.errors.required">
+              please enter your email
+            </div>
+            <div *ngIf="email.errors.email">
+              your email is invalid
+            </div>
+          </div>
+        </div>
+
+        <div class="form-label-group">
+          <label for="inputPassword">Password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" ngModel
+            #password="ngModel" required>
+
+          <div class="text-danger" *ngIf="password.touched && password.invalid">
+            <div *ngIf="password.errors.required">
+              please enter your password
+            </div>
+          </div>
+        </div>
+        <div class="form-label-group">
+          <label for="inputPasswordAgain">again Password</label>
+          <input type="password" id="inputPasswordAgain" class="form-control" placeholder="Password again" required ngModel
+            name="certainPassword" #certainPassword="ngModel" [equalTo]="password" />
+          <div class="text-danger" *ngIf="certainPassword.invalid && certainPassword.touched">
+            <div *ngIf="certainPassword.errors.required">
+              please enter the again password
+            </div>
+            <div *ngIf="certainPassword.errors.equalTo">
+              the password is not equal
+            </div>
+          </div>
+        </div>
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-outline-primary btn-block" [disabled]="f.invalid" type="submit">Sign
+          in</button>
+        <br>
+
+        <button class="btn btn-outline-primary col-md-3" routerLink="/sign-up">Sign Up</button>
+
+   
+      <button class="btn btn-outline-primary " (click)="loginWithGoogle()">Sing in with Google</button>
+
+        <p class="mt-5 mb-3 text-muted text-center">&copy;2019</p>
+      </form>
+    </div>
+  </div>
+</div>

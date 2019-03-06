@@ -1,0 +1,24 @@
+<h1>Shopping cart Item</h1>
+<ng-container *ngIf="cart$ | async as cart">
+  you have {{cart.getTotalCart}} items in your cart!
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prodID of cart.productsID; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{cart.items[prodID].product.title}}</td>
+        <td>{{cart.items[prodID].product.price}}</td>
+        <td>{{cart.items[prodID].quantity}}</td>
+<td><button class="btn btn-outline-danger" (click)="deleteProduct(prodID)">Delete product</button></td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>

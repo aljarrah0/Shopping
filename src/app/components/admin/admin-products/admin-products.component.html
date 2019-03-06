@@ -1,0 +1,25 @@
+<p>
+    <a [routerLink]="['/admin/products','']" class="btn btn-outline-primary">Add Product</a>
+</p>
+<p><input type="text" class="form-control" placeholder="Searching..." #product (keyup)="filter(product.value)"></p>
+<table class="table row-border hover"  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+    <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of filterProducts,let i = index">
+            <td>{{i+1}}</td>
+            <td>{{product.payload.val().title}}</td>
+            <td>{{product.payload.val().price}}</td>
+            <td><a class="btn btn-outline-primary" [routerLink]="['/admin/products/',product.key]">Edit</a></td>
+            <td><button class="btn btn-outline-danger" (click)="delete(product.key)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
